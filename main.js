@@ -36,13 +36,6 @@ const questions = [
 
 let currentQuestionIndex;
 
-function startGame() {
-  startButton.classList.add("hide");
-  currentQuestionIndex = 0;
-  questionContainerElement.classList.remove("hide");
-  setNextQuestion();
-}
-
 function setStatusClass(element) {
   if (element.dataset.correct) {
     element.classList.add("correct");
@@ -87,10 +80,15 @@ function resetState() {
 }
 
 function setNextQuestion() {
-    resetState()
+  resetState();
   showQuestion(questions[currentQuestionIndex]);
 }
-
+function startGame() {
+  startButton.classList.add("hide");
+  currentQuestionIndex = 0;
+  questionContainerElement.classList.remove("hide");
+  setNextQuestion();
+}
 startButton.addEventListener("click", startGame);
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++;
